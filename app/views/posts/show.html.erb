@@ -1,0 +1,16 @@
+<h1><%= @post.title %></h1>
+<h4>Posted by <%= @post.user.username %></h4>
+<p>
+  <%= @post.created_at.strftime("%b %d, %Y") %>
+</p>
+
+<p>
+  <%= @post.body %>
+</p>
+
+<%= link_to "Back", root_path %>
+
+<% if current_user && @post.user_id == current_user.id %>
+  <%= link_to "Edit", edit_post_path(@post)  %>
+  <%= link_to "Delete", @post, method: :delete %>
+<% end %>

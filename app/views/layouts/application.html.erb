@@ -7,7 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <% if notice.present? %>
+    <%= notice %>
+  <% end %>
+  <% if current_user %>
+    <p>Signed in as <%= current_user.username %> </p>
+    <p><%= link_to "Sign Out", signout_path %></p>
+    <% else %>
+    <p>
+      <%= link_to "Sign Up", signup_path %>
+      <%= link_to "Sign In", signin_path %>
+      </p>
+  <% end %>
 <%= yield %>
 
 </body>

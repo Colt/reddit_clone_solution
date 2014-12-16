@@ -1,0 +1,24 @@
+<h1>Register Yourself!</h1>
+
+<%= form_for @user, url: signup_path do |f| %>
+  <% if @user.errors.present? %>
+    <% @user.errors.full_messages.each do |msg|  %>
+    <p>
+      <%= msg %>
+    </p>
+    <% end %>
+  <% end %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <%= f.submit %>
+<% end %>
