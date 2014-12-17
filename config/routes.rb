@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   post '/sign-in' => 'authentications#create'
   get '/sign-out' => 'authentications#destroy', as: :signout
 
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:new, :create]
+  end
+
+
 end

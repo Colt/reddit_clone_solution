@@ -8,7 +8,15 @@
   <%= @post.body %>
 </p>
 
+<hr>
+<h2>Comments</h2>
+  <%= render @post.comments %>
+
 <%= link_to "Back", root_path %>
+
+<% if current_user %>
+  <%= link_to "Add Comment", new_post_comment_path(@post) %>
+<% end %>
 
 <% if current_user && @post.user_id == current_user.id %>
   <%= link_to "Edit", edit_post_path(@post)  %>
